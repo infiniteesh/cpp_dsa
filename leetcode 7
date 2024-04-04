@@ -1,0 +1,32 @@
+#include <limits>
+
+class Solution {
+public:
+    int reverse(int x) {
+    
+    bool neg = false;
+    if(x < 0)
+    {
+        neg = true;
+        x = -static_cast<long long>(x); // Cast x to long long before negating
+    }
+    
+    long sum = 0;
+    while(x != 0)
+    {
+        int rem = x % 10; // Change 'digit' to 'rem'
+        sum = sum * 10 + rem; // Change 'digit' to 'rem'
+        x = x / 10;
+    }
+
+    if(neg)
+    {
+        sum = -sum;
+    }
+    if(sum > INT_MAX || sum < INT_MIN) // INT_MAX and INT_MIN are from <limits> header file
+    {
+        return 0;
+    }
+    return static_cast<int>(sum);
+    }
+};
