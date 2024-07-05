@@ -1,0 +1,34 @@
+// constructor are of three types : default , parameterized and copy constructor
+//constructor is a function which is called whenever object is created , it is used to initialize object value
+
+// copy constructor
+
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+public:
+    int l;
+    int b;
+
+    // Parameterized constructor
+    Rectangle(int x, int y) {
+        l = x;
+        b = y;
+    }
+
+    // Copy constructor
+    Rectangle(Rectangle &r) {
+        l = r.l;
+        b = r.b;
+    }
+};
+
+int main() {
+    Rectangle r1(3, 4);  // Create object r1
+    Rectangle r2 = r1;   // Create object r2 using copy constructor
+
+    cout << r2.l << " " << r2.b << endl;  // Display dimensions of r2
+
+    return 0;
+}
