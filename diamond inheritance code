@@ -1,0 +1,35 @@
+//diamond inheritance problem
+
+#include<iostream>
+using namespace std;
+
+class Parent{
+    public:
+    Parent(){ // constructor of parent class
+    cout<<"Parent Class"<<endl;
+}
+};
+class child1 : public Parent{
+   
+    public:
+    child1(){ //constuctor of child1 class
+    cout<<"child 1 class"<<endl;
+}
+};
+class child2 : public Parent{
+    public:
+    child2(){
+    cout<<"child 2 class"<<endl;
+}
+};
+class grandchild : public child1 , public child2{
+    public:
+    grandchild(){
+    cout<<"Grandchild class"<<endl;
+}
+};
+
+int main()
+{
+    grandchild G;
+}
