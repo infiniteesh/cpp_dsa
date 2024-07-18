@@ -1,0 +1,65 @@
+// question : check string palindrome or not , not case sensitive and ignore white space and special characters :
+
+
+#include<iostream>
+#include<cctype> // for isalnum and tolower
+using namespace std;
+
+char toLowercase(char name)
+{
+    if(name>='a' && name<= 'z')
+    {
+        return name;
+    }
+    else{
+        char temp = name - 'A' + 'a';
+        return temp;
+    }
+}
+
+bool isPalindrome(char name[] , int n)
+{
+    int s = 0;
+    int e = n-1;
+    while(s<=e)
+    {
+        while(s<e && isalnum(name[s]))
+        {
+            s++;
+        }
+        while(s<e && isalnum(name[e]))
+        {
+            e--;
+        }
+        if(toLowercase(name[s])!= toLowercase(name[e]))
+        {
+            return 0;
+        }
+        else
+        {
+            s++;
+            e--;
+        }
+    }
+    return 1;
+}
+
+int lengthString(char name[])
+{
+    int count = 0;
+    for(int i=0 ; name[i]!='\0' ; i++)
+    {
+        count++;
+    }
+    return count;
+}
+
+int main()
+{
+    char name[30];
+    cout<<"enter the character\n";
+    cin>>name;
+    int len = lengthString(name);
+    cout<<"the string is Palindrome or not" << isPalindrome(name , len) <<endl;
+    return 0;
+}
