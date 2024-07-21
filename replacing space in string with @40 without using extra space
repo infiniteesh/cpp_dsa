@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+
+string replacespace(string str)
+{
+    int spacecount=0;
+    for(int i=0;i<str.length() ; i++)
+    {
+        if(str[i]==' ')
+        {
+            spacecount++;
+        }
+    }
+    
+    //calculating new length of string 
+    int newlength = str.length() + spacecount*2;
+    str.resize(newlength);
+    
+    // calculate new index
+    int originalindex = str.length() - spacecount*2-1;
+    int newindex = str.length() - 1;
+    
+    while(originalindex>=0)
+    {
+        if(str[originalindex] == ' ')
+        {
+            str[newindex] = '0';
+            str[newindex-1] = '4';
+            str[newindex-2] = '@';
+            newindex -= 3;
+        }
+        else{
+            str[newindex] = str[originalindex];
+            newindex--;
+        }
+        originalindex--;
+    }
+    return str;
+}
+
+int main()
+{
+    string s;
+    getline(cin,s);
+    cout<<replacespace(s);
+    return 0;
+}
