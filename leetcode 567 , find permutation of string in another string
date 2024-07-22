@@ -1,0 +1,44 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        if (s1.length() > s2.length()) return false;
+        
+        int s1Map[26] = {0};
+        int s2Map[26] = {0};
+        
+        for (int i = 0; i < s1.length(); i++) {
+            s1Map[s1[i] - 'a']++;
+            s2Map[s2[i] - 'a']++;
+        }
+        
+        int matches = 0;
+        for (int i = 0; i < 26; i++) {
+            if (s1Map[i] == s2Map[i]) {
+                matches++;
+            }
+        }
+        
+        for (int i = 0; i < s2.length() - s1.length(); i++) {
+            if (matches == 26) return true;
+            
+            int right = s2[i + s1.length()] - 'a';
+            int left = s2[i] - 'a';
+            
+            s2Map[right]++;
+            if (s2Map[right] == s1Map[right]) {
+                matches++;
+            } else if (s2Map[right] == s1Map[right] + 1) {
+                matches--;
+            }
+            
+            s2Map[left]--;
+            if (s2Map[left] == s1Map[left]) {
+                matches++;
+            } else if (s2Map[left] == s1Map[left] - 1) {
+                matches--;
+            }
+        }
+        
+        return matches == 26;
+    }
+};
