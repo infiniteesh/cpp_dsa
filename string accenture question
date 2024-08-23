@@ -1,0 +1,47 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+string stringMaker(string s)
+{
+    if(s.length()==0)
+    {
+        return "";
+    }
+    int count = 0;
+    string ans = "";
+    for(int i=0 ; i<s.length();i++)
+    {
+        if(s[i]=='1')
+        {
+            count++;
+        }
+        else{
+            if(count>0)
+            {
+                ans = ans + (char)(64+count);
+                count = 0;
+            }
+            
+
+        }
+        
+    }
+    if(count>0)
+    {
+        ans = ans + (char)(64+count);
+    }
+    return ans;
+    
+}
+
+
+using namespace std;
+
+int main() {
+    string s = "1011011101111011111";
+    cout<<stringMaker(s);
+   
+
+    return 0;
+}
